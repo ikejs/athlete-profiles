@@ -1,68 +1,129 @@
-import { Card, Col, FloatingLabel, Form, Row } from 'react-bootstrap';
-import DropdownMultiselect from 'react-multiselect-dropdown-bootstrap';
-import sports from 'constants/sports';
+import { Button, Card, Col, Form, Row } from 'react-bootstrap';
+import Select from 'react-select';
+import Uploady from "@rpldy/uploady";
+import UploadButton from "@rpldy/upload-button";
+import { Controller, useForm } from 'react-hook-form';
+import { genders, sports } from 'constants';
 
-const AddAthleteForm = ({ handleSubmit }) => {
+const AddAthleteForm = ({ onSubmit }) => {
+
+  const { register, handleSubmit, control, watch, formState: { errors } } = useForm();
+
   return (
-    <Card className="blue-container">
-      <Card.Body>
-        <Card.Title className="text-light mb-3">
-          Basic Info
-        </Card.Title>
-        <Form>
-          <Row className="mb-4">
-            <Col>
-              <FloatingLabel
-                label="First Name"
-              >
-                <Form.Control 
-                  type="text" 
-                  placeholder="First Name" 
-                />
-              </FloatingLabel>
-            </Col>
-            <Col>
-              <FloatingLabel
-                label="Last Name"
-              >
-                <Form.Control 
-                  type="text" 
-                  placeholder="Last Name" 
-                />
-              </FloatingLabel>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <Form.Select aria-label="Gender">
-                <option>Gender</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Non-Binary</option>
-              </Form.Select>
-            </Col>
-            <Col>
-              <DropdownMultiselect
-                options={sports}
-                placeholder="Sports"
-                name="sports"
-              />
-                
-              {/* <Form.Control as="select" multiple value={sports}>
-                {sports.map(({ name }, i) => (
-                  <option key={i} value={name}>
-                    {name}
-                  </option>
-                ))}
-            </Form.Control> */}
-            </Col>
-          </Row>
-          {/* <Button variant="primary" type="submit">
-            Submit
-          </Button> */}
-        </Form>
-      </Card.Body>
-    </Card>
+    <>
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <Card className="blue-container">
+          <Card.Body>
+            <Row className="mb-3">
+              {/* <Col>
+                <Card.Title className="text-light mb-3">
+                  Basic Info
+                </Card.Title>
+              </Col> */}
+              <Col>
+                <Row className="mb-3">
+                  <Col>
+                    <Form.Control 
+                      type="text" 
+                      placeholder="Name" 
+                      {...register("athleteName", { required: true })}
+                    />
+                  </Col>
+                </Row>
+                <Row className="mb-3">
+                  <Col xs={6}>
+                    <Form.Control 
+                      type="date" 
+                      placeholder="Birthday" 
+                      {...register("dob", { required: true })}
+                    />
+                  </Col>
+                  <Col>
+                    <Controller
+                      control={control}
+                      name="gender"
+                      render={({ field: { onChange, value, ref }}) => (
+                        <Select
+                          placeholder="Gender"
+                          inputRef={ref}
+                          // onChange={(val) => onChange(val.map(c => c.value))}
+                          options={genders}
+                        />
+                      )}
+                    />
+                  </Col>
+                </Row>
+                <Row>
+                  <Col>
+                    <Form.Control 
+                      type="num" 
+                      placeholder="ZIP" 
+                      {...register("zip", { required: true })}
+                    />
+                  </Col>
+                  <Col className="d-grid gap-2">
+                    <Uploady destination={{ url: "/upload" }} >
+                      <UploadButton text="Upload Image" className="btn btn-dark" />
+                  </Uploady>
+                  </Col>
+                </Row>
+              </Col>
+            </Row>
+            <hr />
+            <Row>
+              {/* <Col>
+                <Card.Title className="text-light mb-3">
+                  About
+                </Card.Title>
+              </Col> */}
+              <Col>
+                <Row className="mb-3">
+                  <Col>
+                    <Form.Control 
+                      type="text" 
+                      placeholder="Team Name(s)" 
+                      {...register("teamName", { required: true })}
+                    />
+                  </Col>
+                </Row>
+                <Row className="mb-3">
+                  <Col>
+                    <Controller
+                      control={control}
+                      name="sports"
+                      render={({ field: { onChange, value, ref }}) => (
+                        <Select
+                          placeholder="Sports"
+                          inputRef={ref}
+                          // onChange={(val) => onChange(val.map(c => c.value))}
+                          options={sports}
+                          isMulti
+                        />
+                      )}
+                    />
+                  </Col>
+                </Row>
+                <Row>
+                  <Col>
+                    <Form.Control 
+                      as="textarea" 
+                      rows={3} 
+                      placeholder="About you" 
+                      {...register("about", { required: true })}
+                    />
+                  </Col>
+                </Row>
+              </Col>
+            </Row>
+          </Card.Body>
+        </Card>
+        <Row>
+          <Col className="d-grid gap-2">
+            <Button size="lg" className="mt-3 blue-btn">Register</Button>
+          </Col>
+        </Row>
+      </Form>
+    </>
   )
 }
 
