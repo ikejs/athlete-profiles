@@ -15,11 +15,6 @@ const AddAthleteForm = ({ onSubmit }) => {
         <Card className="blue-container">
           <Card.Body>
             <Row className="mb-3">
-              {/* <Col>
-                <Card.Title className="text-light mb-3">
-                  Basic Info
-                </Card.Title>
-              </Col> */}
               <Col>
                 <Row className="mb-3">
                   <Col>
@@ -42,11 +37,11 @@ const AddAthleteForm = ({ onSubmit }) => {
                     <Controller
                       control={control}
                       name="gender"
-                      render={({ field: { onChange, value, ref }}) => (
+                      render={({ field: { onChange, ref }}) => (
                         <Select
                           placeholder="Gender"
                           inputRef={ref}
-                          // onChange={(val) => onChange(val.map(c => c.value))}
+                          onChange={({ value }) => onChange(value)}
                           options={genders}
                         />
                       )}
@@ -71,18 +66,20 @@ const AddAthleteForm = ({ onSubmit }) => {
             </Row>
             <hr />
             <Row>
-              {/* <Col>
-                <Card.Title className="text-light mb-3">
-                  About
-                </Card.Title>
-              </Col> */}
               <Col>
                 <Row className="mb-3">
                   <Col>
-                    <Form.Control 
-                      type="text" 
-                      placeholder="Team Name(s)" 
-                      {...register("teamName", { required: true })}
+                    <Controller
+                      control={control}
+                      name="teams"
+                      render={({ field: { onChange, ref }}) => (
+                        <Form.Control 
+                          type="text" 
+                          placeholder="Team Names (ex: Cardinals, Badgers)"
+                          inputRef={ref}
+                          onChange={({ target: { value } }) => onChange(value.split(', '))}
+                        />
+                      )}
                     />
                   </Col>
                 </Row>
@@ -91,11 +88,11 @@ const AddAthleteForm = ({ onSubmit }) => {
                     <Controller
                       control={control}
                       name="sports"
-                      render={({ field: { onChange, value, ref }}) => (
+                      render={({ field: { onChange, ref }}) => (
                         <Select
                           placeholder="Sports"
                           inputRef={ref}
-                          // onChange={(val) => onChange(val.map(c => c.value))}
+                          onChange={(sports) => onChange(sports.map(sport => sport.value))}
                           options={sports}
                           isMulti
                         />
@@ -119,7 +116,7 @@ const AddAthleteForm = ({ onSubmit }) => {
         </Card>
         <Row>
           <Col className="d-grid gap-2">
-            <Button size="lg" className="mt-3 blue-btn">Register</Button>
+            <Button size="lg" className="mt-3 blue-btn" type="submit">Register</Button>
           </Col>
         </Row>
       </Form>
