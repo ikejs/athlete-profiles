@@ -1,0 +1,12 @@
+{
+  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.formatOnSave": false,
+  },
+  "eslint.alwaysShowStatus": true,
+  "eslint.autoFixOnSave": true,
+  "workbench.colorCustomizations": {},
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
+}

@@ -1,1 +1,3 @@
-export { default } from 'features/Home';
+import { HomeContainer } from 'features/Home';
+
+export default HomeContainer;

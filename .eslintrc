@@ -4,7 +4,9 @@
     "import/resolver": {
       "alias": {
         "map": [
-          ["features", "./features"]
+          ["features", "./features"],
+          ["middleware", "./middleware"],
+          ["models", "./models"]
         ]
       }
     }

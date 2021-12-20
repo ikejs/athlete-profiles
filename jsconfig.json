@@ -3,6 +3,8 @@
     "baseUrl": ".",
     "paths": {
       "features/*": ["features/*"],
+      "middleware/*": ["middleware/*"],
+      "models/*": ["models/*"],
     }
   }
 }
