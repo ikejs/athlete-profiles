@@ -76,7 +76,7 @@ const FileInput = (props) => {
               ))}
             </div>
           ) : (
-            <p className="text-white">Drag Photo Here...</p>
+            <p className="text-white m-0">Drag Photo Here...</p>
           )}
         </div>
       </div>
@@ -86,8 +86,9 @@ const FileInput = (props) => {
 
 const styles = {
   dropZone: {
+    padding: '0.33em',
     backgroundColor: '#829ba1',
-    borderWidth: '2px',
+    borderWidth: '2.3px',
     borderColor: '#365f69',
     borderStyle: 'dashed',
     display: 'flex',
