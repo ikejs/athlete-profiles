@@ -1,15 +1,16 @@
 import { Button, Card, Col, Form, Row } from 'react-bootstrap';
 import Select from 'react-select';
-import Uploady from '@rpldy/uploady';
-import UploadButton from '@rpldy/upload-button';
 import { Controller, useForm } from 'react-hook-form';
 import { genders, sports } from 'constants';
+import FileInput from './FileInput';
 
 const AddAthleteForm = ({ onSubmit }) => {
   const {
     register,
+    unregister,
     handleSubmit,
     control,
+    setValue,
     watch,
     formState: { errors },
   } = useForm();
@@ -61,12 +62,14 @@ const AddAthleteForm = ({ onSubmit }) => {
                   />
                 </Col>
                 <Col className="d-grid gap-2">
-                  <Uploady destination={{ url: '/upload' }}>
-                    <UploadButton
-                      text="Upload Image"
-                      className="btn btn-dark"
-                    />
-                  </Uploady>
+                  <FileInput
+                    accept="image/png, image/jpg, image/jpeg, image/pdf"
+                    name="photo"
+                    register={register}
+                    unregister={unregister}
+                    setValue={setValue}
+                    watch={watch}
+                  />
                 </Col>
               </Row>
             </Col>
