@@ -1,5 +1,8 @@
 {
-  "extends": ["wesbos"],
+  "extends": [
+    "wesbos", 
+    "plugin:@next/next/recommended"
+  ],
   "settings": { 
     "import/resolver": {
       "alias": {
