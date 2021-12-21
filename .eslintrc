@@ -6,7 +6,8 @@
         "map": [
           ["features", "./features"],
           ["middleware", "./middleware"],
-          ["models", "./models"]
+          ["models", "./models"],
+          ["utils", "./utils"]
         ]
       }
     }

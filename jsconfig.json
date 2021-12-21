@@ -5,6 +5,7 @@
       "features/*": ["features/*"],
       "middleware/*": ["middleware/*"],
       "models/*": ["models/*"],
+      "utils/*": ["utils/*"],
     }
   }
 }

@@ -9,11 +9,10 @@ export default async function handler(req, res) {
   switch (method) {
     case 'POST':
       try {
-        console.log('POSTED FROM CLIENT', body);
-        // const athlete = await Athlete.create(body);
-        // console.log('CREATED ATHLETE', athlete);
-        // res.json(athlete);
+        const athlete = await Athlete.create(body);
+        res.json(athlete);
       } catch (error) {
+        res.json({ success: false, error });
         console.log(error);
       }
       break;

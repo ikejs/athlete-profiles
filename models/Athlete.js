@@ -5,6 +5,7 @@ const AthleteSchema = new mongoose.Schema({
   athleteName: String,
   dob: String,
   gender: String,
+  imageUrl: String,
   sports: Array,
   teams: Array,
   zip: String,

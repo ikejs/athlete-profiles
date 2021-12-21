@@ -6,11 +6,8 @@
     "start": "next start"
   },
   "dependencies": {
-    "@rpldy/upload-button": "^0.15.0",
-    "@rpldy/uploady": "^0.15.0",
     "bootstrap": "5.1.3",
     "eslint": "^8.5.0",
-    "firebase": "^9.6.1",
     "mongoose": "^6.1.2",
     "next": "latest",
     "prop-types": "^15.7.2",
