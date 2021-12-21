@@ -8,7 +8,7 @@ const HomeContainer = () => {
   const onSubmit = async (data) => {
     const imageUrl = await uploadImage(data.photo[0]);
     data.imageUrl = imageUrl;
-    fetch('/api/athletes', {
+    fetch(`${process.env.API_ENDPOINT}/athletes`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
