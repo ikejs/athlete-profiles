@@ -19,6 +19,7 @@ const AddAthleteForm = ({ onSubmit }) => {
     <Form onSubmit={handleSubmit(onSubmit)}>
       <Card className="blue-container">
         <Card.Body>
+          {errors.length && <p className="text-danger">{errors}</p>}
           <Row className="mb-3">
             <Col>
               <Row className="mb-3">
