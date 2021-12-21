@@ -7,6 +7,8 @@
     "import/resolver": {
       "alias": {
         "map": [
+          ["components", "./components"],
+          ["constants", "./constants"],
           ["features", "./features"],
           ["middleware", "./middleware"],
           ["models", "./models"],

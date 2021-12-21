@@ -2,6 +2,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      "components/*": ["components/*"],
+      "constants/*": ["constants/*"],
       "features/*": ["features/*"],
       "middleware/*": ["middleware/*"],
       "models/*": ["models/*"],
