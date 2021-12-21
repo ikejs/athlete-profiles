@@ -5,8 +5,7 @@ import SportsList from 'components/SportsList';
 import TeamsList from 'components/TeamsList';
 
 const AthleteCard = ({ athlete }) => {
-  const { about, athleteName, dob, gender, imageUrl, sports, teams, zip } =
-    athlete;
+  const { about, athleteName, dob, imageUrl, sports, teams } = athlete;
   return (
     <Container className="col-md-8 mt-4 bg-white p-4 rounded">
       <Container className="d-flex">

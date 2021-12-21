@@ -8,7 +8,7 @@ const NavComponent = () => {
   return (
     <Navbar className="blue-nav" variant="dark">
       <Container>
-        <Link href="/">
+        <Link href="/" passHref>
           <Navbar.Brand>Athlete Profiles</Navbar.Brand>
         </Link>
         <Nav className="justify-content-end" activeKey={router.asPath}>

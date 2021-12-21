@@ -53,5 +53,5 @@ export const sports = [
   { value: 'swimming', label: 'Swimming' },
   { value: 'tennis', label: 'Tennis' },
   { value: 'track-and field', label: 'Track and Field' },
-  { value: 'esports', label: 'eSports' }
+  { value: 'esports', label: 'eSports' },
 ];

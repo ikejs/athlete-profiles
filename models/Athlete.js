@@ -1,6 +1,8 @@
 import mongoose from 'mongoose';
 
-const AthleteSchema = new mongoose.Schema({
+const { Schema } = mongoose;
+
+const athleteSchema = new Schema({
   about: String,
   athleteName: String,
   dob: String,
@@ -11,5 +13,8 @@ const AthleteSchema = new mongoose.Schema({
   zip: String,
 });
 
-module.exports =
-  mongoose.models.Athlete || mongoose.model('Athlete', AthleteSchema);
+mongoose.models = {};
+
+const Athlete = mongoose.model('Athlete', athleteSchema);
+
+export default Athlete;

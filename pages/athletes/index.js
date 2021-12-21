@@ -1,3 +1,6 @@
-import { AthletesContainer } from 'features/Athletes';
+// import { AthletesContainer } from 'features/Athletes';
 
-export default AthletesContainer;
+// export default AthletesContainer;
+
+const Athletes = () => <div />;
+export default Athletes;
