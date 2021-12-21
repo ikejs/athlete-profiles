@@ -1,5 +1,6 @@
 import { Button, Card, Col, Form, Row } from 'react-bootstrap';
 import Select from 'react-select';
+import { func, array } from 'prop-types';
 import { Controller, useForm } from 'react-hook-form';
 import { genders, sports } from 'constants';
 import FileInput from './FileInput';
@@ -104,11 +105,11 @@ const AddAthleteForm = ({ onSubmit }) => {
                     render={({ field: { onChange, ref } }) => (
                       <Select
                         placeholder="Sports"
-                        inputRef={ref}
-                        onChange={(sports) =>
-                          onChange(sports.map((sport) => sport.value))
-                        }
                         options={sports}
+                        inputRef={ref}
+                        onChange={(sportObjList) =>
+                          onChange(sportObjList.map((sport) => sport.value))
+                        }
                         isMulti
                       />
                     )}
@@ -138,6 +139,11 @@ const AddAthleteForm = ({ onSubmit }) => {
       </Row>
     </Form>
   );
+};
+
+AddAthleteForm.propTypes = {
+  onSubmit: func,
+  sports: array,
 };
 
 export default AddAthleteForm;

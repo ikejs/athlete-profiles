@@ -1,12 +1,27 @@
 // https://codesandbox.io/s/react-hook-form-uploadfile-with-thumbnail-preview--drag-and-drop-p11gy
 
 import React, { useCallback, useEffect } from 'react';
+import Image from 'next/image';
+import { string, func } from 'prop-types';
 import { useDropzone } from 'react-dropzone';
+
+const styles = {
+  dropZone: {
+    padding: '0.33em',
+    backgroundColor: '#829ba1',
+    borderWidth: '2.3px',
+    borderColor: '#365f69',
+    borderStyle: 'dashed',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+};
 
 const FileInput = (props) => {
   const {
+    accept,
     name,
-    label = name,
     mode = 'update',
     register,
     unregister,
@@ -44,7 +59,7 @@ const FileInput = (props) => {
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
-    accept: props.accept,
+    accept,
   });
 
   useEffect(() => {
@@ -67,10 +82,11 @@ const FileInput = (props) => {
             <div>
               {files.map((file) => (
                 <div key={file.name}>
-                  <img
+                  <Image
                     src={URL.createObjectURL(file)}
                     alt={file.name}
-                    style={{ width: '100px' }}
+                    width={100}
+                    height={100}
                   />
                 </div>
               ))}
@@ -84,17 +100,14 @@ const FileInput = (props) => {
   );
 };
 
-const styles = {
-  dropZone: {
-    padding: '0.33em',
-    backgroundColor: '#829ba1',
-    borderWidth: '2.3px',
-    borderColor: '#365f69',
-    borderStyle: 'dashed',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+FileInput.propTypes = {
+  accept: string,
+  name: string,
+  mode: string,
+  register: func,
+  unregister: func,
+  setValue: func,
+  watch: func,
 };
 
 export default FileInput;
