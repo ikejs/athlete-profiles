@@ -25,11 +25,7 @@ const HomeContainer = () => {
       });
   };
 
-  const props = {
-    onSubmit,
-  };
-
-  return <Home {...props} />;
+  return <Home onSubmit={onSubmit} />;
 };
 
 export { HomeContainer };

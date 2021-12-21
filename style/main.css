@@ -1,0 +1,24 @@
+/* ensure all pages have Bootstrap CSS */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+body {
+  background-color: #043743;
+}
+
+.blue-nav {
+  background-color: #021c22;
+  padding: 1em 0 1em 0;
+}
+
+.blue-container {
+  background-color: #365f69;
+}
+
+.blue-btn {
+  background-color: #011014;
+  border: 4px solid #032c36;
+}
+
+.blue-btn:hover {
+  background-color: #03272f;
+}
